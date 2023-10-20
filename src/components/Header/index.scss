@@ -1,0 +1,32 @@
+@use "../../sass/variables" as *;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.header {
+    background-color: $header-color;
+    width: 100%;
+    height: 74px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+
+    h2{
+        font-size: 25px;
+        font-weight: 600;
+        font-family: $main-font;
+        line-height: 37px;
+        padding-left: 2rem;
+        padding-bottom: 0.3%;
+    }
+
+    .selected{
+        background-color: $header-selected;
+        color: $header-color;
+        border-radius: 10px 10px 0px 0px;
+        padding: 8px;
+    }
+}

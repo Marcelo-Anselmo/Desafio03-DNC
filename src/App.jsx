@@ -1,4 +1,6 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+import Header from './components/Header/Header'
+import TaskList from './components/TaskList/TaskList'
 import './index.scss'
 
 function App() {
@@ -67,9 +69,8 @@ function App() {
 
   return (
     <>
-      <div>
-        Olá mundo!
-      </div>
+      <Header />
+      <TaskList data="db" />
     </>
   )
 }
