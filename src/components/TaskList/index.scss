@@ -1,0 +1,39 @@
+@use "../../sass/variables" as *;
+
+.Home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+
+    
+    h1{
+        font-family: $main-font;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 60px;
+        color: $header-selected;
+    }
+
+    table {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+        table-layout: fixed;
+
+        th{
+            font-size: 23px;
+            font-family: $alert-font;
+            font-weight: 600;
+            line-height: 35px;
+            color:$header-selected;
+            padding: 3rem;
+            
+        }
+
+        
+
+    }
+}

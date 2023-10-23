@@ -1,9 +1,7 @@
-// import { useState } from 'react'
-import Header from './components/Header/Header'
-import TaskList from './components/TaskList/TaskList'
-import './index.scss'
+import React, { useState, useEffect } from 'react'
+import "./index.scss"
 
-function App() {
+const TaskList = () => {
   const db = [
     {
       id: 1,
@@ -67,12 +65,61 @@ function App() {
     },
   ];
 
+
+  const [newTask, setNewTask] = useState("");
+  const [updateData, setUpdateData] = useState("");
+
+  //Add Task
+  const addTask = () => {
+    //
+  };
+
+  //Delete Task
+  const deleteTask = (id) => {
+    //
+  };
+
+  //Mark task as done or completed
+  const markDone = (id) => {
+    //
+  };
+
+  //Cancel update
+  const cancelUpdate = () => {
+    //
+  };
+
+  //Change task for update
+  const changeTask = (e) => {
+    //
+  };
+
+  //Update Task
+  const updateTask = () => {
+    //
+  };
+
   return (
-    <>
-      <Header />
-      <TaskList />
-    </>
-  )
+    <section className="Home">
+      <h1>Organize seu tempo e se organize com o nosso Planejador Diário.</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tarefa</th>
+            <th>Status</th>
+            <th>Opções</th>
+          </tr>
+          <hr />
+        </thead>
+        <tbody>
+          {db.map((db) => (
+            <p key={db.id}>{db.title}</p>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  );
 }
 
-export default App
+export default TaskList;
