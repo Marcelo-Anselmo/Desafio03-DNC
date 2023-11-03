@@ -16,12 +16,17 @@
         color: $header-selected;
     }
 
+    #container {
+        width: 50%;
+    }
+
     table {
-        display: flex;
         width: 100%;
         justify-content: center;
         margin-top: 1rem;
         table-layout: fixed;
+        color: aliceblue;
+        font-size: 30px;
 
         th{
             font-size: 23px;
@@ -32,8 +37,33 @@
             padding: 3rem;
             
         }
-
-        
-
     }
+
+    input[type=checkbox]{
+        margin-left: 50%;
+        scale: 150%;
+    }
+
+    .edit{
+        margin-right: 15px;
+        margin-left: 40%;
+        cursor: pointer;
+    }
+
+    .delete {
+        cursor: pointer;
+    }
+
+    input[type=text]{
+        padding: 10px;
+        margin-top: 2rem;
+        height: 40px;
+        width: 30%;
+    }
+
+    button {
+        height: 40px;
+        width: 3rem;
+    }
+
 }
