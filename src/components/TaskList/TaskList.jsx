@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import "./index.scss"
+import { FaEdit, FaWindowClose } from "react-icons/fa";
 
 const TaskList = () => {
   const db = [
@@ -65,59 +66,105 @@ const TaskList = () => {
     },
   ];
 
+  const [input, setInput] = useState("");
+  const [tasks, setTasks] = useState(db);
 
-  const [newTask, setNewTask] = useState("");
-  const [updateData, setUpdateData] = useState("");
+  useEffect(() => {
+    // Verifique se há dados no localStorage ao carregar a página
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    if (storedTasks) {
+      setTasks(storedTasks);
+    } else {
+      setTasks(db);
+    }
+  }, []);
 
-  //Add Task
-  const addTask = () => {
-    //
-  };
+  const addTask = (e) => {
+    e.preventDefault();
+    input.trim(input);
 
-  //Delete Task
-  const deleteTask = (id) => {
-    //
-  };
+    if (tasks.indexOf(input) !== -1 || input === '') return;
 
-  //Mark task as done or completed
-  const markDone = (id) => {
-    //
-  };
+    const newTask = {
+      id: tasks.length + 1,
+      title: input,
+      description: "Descrição da tarefa",
+      completed: tasks.completed,
+    };
 
-  //Cancel update
-  const cancelUpdate = () => {
-    //
-  };
+    const updatedTasks = [...tasks, newTask];
+    setTasks(updatedTasks);
+    setInput("");
 
-  //Change task for update
-  const changeTask = (e) => {
-    //
-  };
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  }
 
-  //Update Task
-  const updateTask = () => {
-    //
-  };
+  const handleEdit = (e, index) => {
+    console.log("Edit", index);
+  }
+  
+  const handleDelete = (e, index) => {
+    const novasTasks = [...tasks];
+    novasTasks.splice(index, 1);
+
+    setTasks([...novasTasks]);
+
+    localStorage.setItem("tasks", JSON.stringify(novasTasks));
+  }
+  
+  // const novoItem = (
+    
+  // )
 
   return (
     <section className="Home">
       <h1>Organize seu tempo e se organize com o nosso Planejador Diário.</h1>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Tarefa</th>
-            <th>Status</th>
-            <th>Opções</th>
-          </tr>
-          <hr />
-        </thead>
-        <tbody>
-          {db.map((db) => (
-            <p key={db.id}>{db.title}</p>
-          ))}
-        </tbody>
-      </table>
+      <div id="container">
+        <table>
+          <thead>
+            <tr>
+              <th>Tarefa</th>
+              <th>Status</th>
+              <th>Opções</th>
+            </tr>
+            <hr />
+          </thead>
+          <tbody>
+            {tasks.map((tasks, index) => (
+              <tr key={index}>
+                <td>{tasks.title}</td>
+                <td>
+                  {" "}
+                  <input
+                    type="checkbox"
+                    name="taskCompleted"
+                    value={tasks.completed}
+                    checked={tasks.completed}
+                  />
+                </td>
+                <td>
+                  <FaEdit onClick={(e) => handleEdit(e, index)} className='edit' />
+                  <FaWindowClose onClick={(e) => handleDelete(e, index)} className='delete' />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <form onSubmit={addTask} className="tasks__form">
+          <input
+            onChange={(e) => setInput(e.target.value)}
+            type="text"
+            placeholder="Adicione uma tarefa"
+            value={input}
+            name="text"
+            className="tasks__input"
+          />
+          <button type="submit" className="tasks__button">
+            Add
+          </button>
+        </form>
+      </div>
     </section>
   );
 }
