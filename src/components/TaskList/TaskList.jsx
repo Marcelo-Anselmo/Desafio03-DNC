@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
-import "./index.scss"
+import { useState, useEffect } from "react";
+import "./index.scss";
 import { FaEdit, FaWindowClose } from "react-icons/fa";
+import Modal from "../Modal/Modal";
 
 const TaskList = () => {
   const db = [
@@ -66,6 +67,8 @@ const TaskList = () => {
     },
   ];
 
+  const [open, setOpen] = useState(false);
+
   const [input, setInput] = useState("");
   const [tasks, setTasks] = useState(db);
 
@@ -83,7 +86,7 @@ const TaskList = () => {
     e.preventDefault();
     input.trim(input);
 
-    if (tasks.indexOf(input) !== -1 || input === '') return;
+    if (tasks.indexOf(input) !== -1 || input === "") return;
 
     const newTask = {
       id: tasks.length + 1,
@@ -96,30 +99,42 @@ const TaskList = () => {
     setTasks(updatedTasks);
     setInput("");
 
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-  }
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  };
 
   const handleEdit = (e, index) => {
-    console.log("Edit", index);
-  }
-  
+    setOpen(true);
+  };
+
   const handleDelete = (e, index) => {
+    setOpen(true)
+    if(btnConfirmDel === true){
+      console.log("Deletando...");
+    }
     const novasTasks = [...tasks];
     novasTasks.splice(index, 1);
 
     setTasks([...novasTasks]);
 
     localStorage.setItem("tasks", JSON.stringify(novasTasks));
+  };
+
+  const handleConfirmEdit = () => {
+    console.log("Amigo estou aqui!");
   }
-  
-  // const novoItem = (
+
+  const handleConfirmDel = () => {
+    setOpen(false);
     
-  // )
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   return (
     <section className="Home">
       <h1>Organize seu tempo e se organize com o nosso Planejador Diário.</h1>
-
       <div id="container">
         <table>
           <thead>
@@ -144,8 +159,14 @@ const TaskList = () => {
                   />
                 </td>
                 <td>
-                  <FaEdit onClick={(e) => handleEdit(e, index)} className='edit' />
-                  <FaWindowClose onClick={(e) => handleDelete(e, index)} className='delete' />
+                  <FaEdit
+                    onClick={(e) => handleEdit(e, index)}
+                    className="edit"
+                  />
+                  <FaWindowClose
+                    onClick={(e) => handleDelete(e, index, open)}
+                    className="delete"
+                  />
                 </td>
               </tr>
             ))}
@@ -165,8 +186,18 @@ const TaskList = () => {
           </button>
         </form>
       </div>
+      <Modal
+        isOpen={open}
+        setOpen={setOpen}
+        title={"Você deseja editar essa tarefa?"}
+        description={"description"}
+        btnConfirmEdit={handleConfirmEdit}
+        btnConfirmDel={true}
+        btnCancel={handleCancel}
+      />
+      ;
     </section>
   );
-}
+};
 
 export default TaskList;

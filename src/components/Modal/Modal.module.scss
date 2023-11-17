@@ -1,0 +1,32 @@
+.BG {
+    position: fixed;
+    background-color: #FFFFFF;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    color: black;
+    padding: 4rem;
+    border-radius: 8px;
+
+    h1{
+        color: black;
+    }
+}
+
+.Btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button{
+        margin: 0.5rem;
+    }
+}
