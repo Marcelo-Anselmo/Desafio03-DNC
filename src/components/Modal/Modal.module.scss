@@ -21,7 +21,7 @@
     border-radius: 8px;
 
     h1{
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: bold;
         color: black;
     }
@@ -47,17 +47,17 @@
 }
 
 .BtnConfirm{
-    background-color: $header-color;
-    color: aliceblue;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.534) !important;
     font-weight: 600;
     font-size: 1.5rem;
     cursor: not-allowed;
 }
 
 .BtnClose{
-    background-color: transparent;
-    color: black;
-    border: 1px solid rgba(0, 0, 0, 0.534) !important;
+    background-color: $header-color;
+    color: aliceblue;
     font-weight: 600;
     font-size: 1.5rem;
     cursor: pointer;
