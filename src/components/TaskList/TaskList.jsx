@@ -37,7 +37,7 @@ const TaskList = ({ database }) => {
   return (
     <section className="Home">
       <h1>Organize seu tempo e se organize com o nosso Planejador Diário.</h1>
-      <div id="container">
+      <div className="container">
         <table>
           <thead>
             <tr>
@@ -54,7 +54,7 @@ const TaskList = ({ database }) => {
                   <input type="checkbox" name="taskCompleted" id="" />
                 </td>
                 <td>
-                  <FaEdit
+                  <FaEdit size={20} id="btnEdit"
                     onClick={() =>
                       setModalDetail({
                         isOpen: true,
@@ -63,7 +63,7 @@ const TaskList = ({ database }) => {
                       })
                     }
                   />
-                  <FaWindowClose
+                  <FaWindowClose size={20} id="btnClose"
                     onClick={() =>
                       setModalDetail({
                         isOpen: true,
@@ -87,7 +87,7 @@ const TaskList = ({ database }) => {
             )}
           </tbody>
         </table>
-        <div>
+        <div className="task__input">
           <input
             onChange={(e) => setNovaTask(e.target.value)}
             type="text"
