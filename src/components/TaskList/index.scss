@@ -54,3 +54,11 @@ table {
         border: 0;
     }
 }
+
+@media only screen and (max-width: 1400px){
+    table {
+        td{
+            padding: 1rem 13rem 0 6.9rem;
+        }
+    }
+}
