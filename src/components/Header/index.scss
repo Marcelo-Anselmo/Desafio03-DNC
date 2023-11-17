@@ -1,0 +1,26 @@
+@use "../../sass/variables" as *;
+
+.header {
+    background-color: $header-color;
+    width: 100vw;
+    min-height: 5rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+
+    h2{
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 37px;
+        padding-left: 2rem;
+        padding-bottom: 0.3%;
+        color: $header-selected;
+    }
+
+    .selected{
+        background-color: $header-selected;
+        color: $header-color;
+        border-radius: 10px 10px 0px 0px;
+        padding: 8px;
+    }
+}
