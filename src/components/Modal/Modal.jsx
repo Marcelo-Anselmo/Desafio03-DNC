@@ -9,8 +9,8 @@ const Modal = ({ isOpen, isClose, title, description }) => {
           <h1>{title}</h1>
           <p>{description}</p>
           <div className={styles.Btns}>
-            <button disabled onClick={() =>  isClose()}>Sim</button>
-            <button onClick={() =>  isClose()}>Não</button>
+            <button className={styles.BtnConfirm} disabled onClick={() =>  isClose()}>Sim</button>
+            <button className={styles.BtnClose} onClick={() =>  isClose()}>Não</button>
           </div>
         </div>
       </div>
